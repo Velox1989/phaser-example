@@ -19,6 +19,17 @@ class Level1 extends Phaser.Scene {
         this.map.on("pointerdown", () => {
             console.log("click")
         });
+
+        // resize
+        const resize = () => {
+            // adjust positions and size of all sprites in here
+            console.log('resize')
+        }      
+        this.scale.on('resize', (gameSize, baseSize, displaySize, resolution) => {
+            this.cameras.resize(gameSize.width, gameSize.height)
+            resize()
+        })
+        resize()
         
     }
 }
