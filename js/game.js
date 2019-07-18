@@ -1,19 +1,19 @@
-var width;
-var height;
-var resize;
+var width
+var height
+var resize
 
-const DEFAULT_WIDTH = 610;
-const DEFAULT_HEIGHT = 960;
-const MAX_WIDTH = DEFAULT_WIDTH * 2;
-const MAX_HEIGHT = DEFAULT_HEIGHT * 2;
-let SCALE_MODE = 'SMOOTH';
+const DEFAULT_WIDTH = 610
+const DEFAULT_HEIGHT = 960
+const MAX_WIDTH = DEFAULT_WIDTH * 2
+const MAX_HEIGHT = DEFAULT_HEIGHT * 2
+let SCALE_MODE = 'SMOOTH'
 
 const config = {
-    type: Phaser.WEBGL,
-    backgroundColor: '#00ffff',
-    parent: 'game',
+  type: Phaser.WEBGL,
+  backgroundColor: '#00ffff',
+  parent: 'game',
 
-    scale: {
+  scale: {
     mode: Phaser.Scale.NONE,
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT
@@ -23,7 +23,6 @@ const config = {
 }
 
 window.addEventListener('load', () => {
-  
   const game = new Phaser.Game(config)
 
   const resize = () => {
@@ -53,10 +52,14 @@ window.addEventListener('load', () => {
       }
       if (width / height < w / h) {
         smooth =
-          -normalize(newWidth / newHeight, defaultRatio, maxRatioWidth) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
+          -normalize(newWidth / newHeight, defaultRatio, maxRatioWidth) /
+            (1 / (maxSmoothScale - 1)) +
+          maxSmoothScale
       } else {
         smooth =
-          -normalize(newWidth / newHeight, defaultRatio, maxRatioHeight) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
+          -normalize(newWidth / newHeight, defaultRatio, maxRatioHeight) /
+            (1 / (maxSmoothScale - 1)) +
+          maxSmoothScale
       }
     }
 
@@ -70,7 +73,6 @@ window.addEventListener('load', () => {
     // center the game with css margin
     game.canvas.style.marginTop = `${(h - newHeight * scale) / 2}px`
     game.canvas.style.marginLeft = `${(w - newWidth * scale) / 2}px`
-
   }
 
   window.addEventListener('resize', event => {
@@ -78,7 +80,6 @@ window.addEventListener('load', () => {
     // console.log('resize, height: ' + height)
     resize()
   })
-  
+
   resize()
 })
-
