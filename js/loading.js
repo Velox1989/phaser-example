@@ -92,6 +92,8 @@ class Loading extends Phaser.Scene {
     this.button_play.on(
       'pointerup',
       function() {
+        // remove the event listener for "resize"
+        this.scale.removeListener('resize')
         this.scene.start('level1')
         console.log('click')
       },
