@@ -24,12 +24,13 @@ class Level1 extends Phaser.Scene {
 
     // resize
     const resize = () => {
-      // adjust positions and size of all sprites in here
-      console.log('resize')
+      this.map.setPosition(this.cameras.main.centerX, this.cameras.main.centerY)
     }
     this.scale.on('resize', (gameSize, baseSize, displaySize, resolution) => {
-      this.cameras.resize(gameSize.width, gameSize.height)
-      resize()
+      if (this.scene.isActive()) {
+        this.cameras.resize(gameSize.width, gameSize.height)
+        resize()
+      }
     })
     resize()
   }

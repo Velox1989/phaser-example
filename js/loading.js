@@ -89,16 +89,12 @@ class Loading extends Phaser.Scene {
       'button_play'
     )
     this.button_play.setInteractive({ useHandCursor: true })
-    this.button_play.on(
-      'pointerup',
-      function() {
-        // remove the event listener for "resize"
-        this.scale.removeListener('resize')
-        this.scene.start('level1')
-        console.log('click')
-      },
-      this
-    )
+    this.button_play.on('pointerup', () => {
+      // remove the event listener for "resize"
+      //this.scale.removeListener('resize')
+      this.scene.start('level1')
+      console.log('click')
+    })
 
     this.preloader1.visible = false
     this.preloader2.visible = false
@@ -113,8 +109,10 @@ class Loading extends Phaser.Scene {
       this.title.setPosition(width / 2, height / 2 - 50)
     }
     this.scale.on('resize', (gameSize, baseSize, displaySize, resolution) => {
-      this.cameras.resize(gameSize.width, gameSize.height)
-      resize()
+      if (this.scene.isActive()) {
+        this.cameras.resize(gameSize.width, gameSize.height)
+        resize()
+      }
     })
     resize()
   }
