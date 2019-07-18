@@ -74,8 +74,8 @@ window.addEventListener('load', () => {
   }
 
   window.addEventListener('resize', event => {
-    console.log('resize, width: ' + width)
-    console.log('resize, height: ' + height)
+    // console.log('resize, width: ' + width)
+    // console.log('resize, height: ' + height)
     resize()
   })
   

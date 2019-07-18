@@ -82,6 +82,21 @@ class Loading extends Phaser.Scene
         
         this.preloader1.visible = false
         this.preloader2.visible = false
+
+        // resize
+        const resize = () => {
+            width = this.cameras.main.width;
+            height = this.cameras.main.height;
+
+            this.button_play.setPosition(width/2, height/2 + 100)
+            this.website.setPosition(width/2, height/2 - 150)
+            this.title.setPosition(width/2, height/2 - 50)
+        }      
+        this.scale.on('resize', (gameSize, baseSize, displaySize, resolution) => {
+            this.cameras.resize(gameSize.width, gameSize.height)
+            resize()
+        })
+        resize()
         
 
     }
